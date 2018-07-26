@@ -1,0 +1,57 @@
+// Section - Footer
+// ================
+
+.section-bottom { // Sticky footer
+  background-color: $section-bottom-background-color-base;
+  display: table-row;
+  height: 1px;
+}
+
+.footer {
+  color: $footer-font-color-base;
+  font-size: .9em;
+  padding: 16px 0;
+
+  a {
+    color: $footer-font-color-base;
+
+    &:link,
+    &:visited {
+      color: $footer-font-color-base;
+    }
+
+    &:hover {
+      color: $footer-font-hover-color-base;
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer-links {
+  text-align: right;
+
+  p {
+    color: $footer-links-font-color-base;
+  }
+
+  a {
+    color: $footer-links-font-color-base;
+    text-transform: lowercase;
+
+    &:hover {
+      color: $footer-links-font-hover-color-base;
+    }
+  }
+}
+
+@media only screen and (max-width: $screen-sm) {
+  .footer,
+  .footer-links {
+    text-align: center;
+  }
+}
+
+.copyright {
+  color: $footer-copyright-font-color-base;
+  text-transform: initial;
+}

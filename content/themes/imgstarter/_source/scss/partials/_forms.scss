@@ -1,0 +1,19 @@
+// Forms
+// =====
+// Colors defined in modules/_variables_forms.scss
+
+fieldset {
+  border: 0 none; // Reset Bootstrap style
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select,
+textarea {
+  border: 1px solid $form-item-border-color-base;
+  max-width: 445px;
+  padding: 6px 6px 5px;
+  width: 45%;
+}

@@ -1,0 +1,38 @@
+// Buttons
+// =======
+// base class: button
+// secondary classes: primaryAction and secondaryAction
+// applies to anchors, buttons, input[type="submit"]
+// colors defined in modules/_variables_buttons.scss
+
+.button {
+  @include smooth; // Defined in modules/_mixins.scss
+  border: 0 none;
+  font-size: 1em;
+  min-width: 120px;
+  padding: 5px 9px;
+
+  &.primaryAction {
+    background-color: $button-primary-background-color-base;
+    color: $button-primary-font-color-base;
+
+    &:hover {
+      background-color: $button-primary-background-hover-color-base;
+      color: $button-primary-font-hover-color-base;
+    }
+  }
+
+  &.secondaryAction {
+    background-color: $button-secondary-background-color-base;
+    color: $button-secondary-font-color-base;
+
+    &:hover {
+      background-color: $button-secondary-background-hover-color-base;
+      color: $button-secondary-font-hover-color-base;
+    }
+  }
+
+  @media only screen and (max-width: $screen-md) {
+    min-width: 48%;
+  }
+}

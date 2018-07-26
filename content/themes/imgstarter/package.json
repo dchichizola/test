@@ -1,0 +1,51 @@
+{
+  "name": "starter-theme",
+  "version": "2.1.0",
+  "description": "Starting template for building custom themes. Uses SCSS and AutoPrefixr, HTML5 Boilerplate with Modernizr and Normalize.css, and Gulp (Core) for all processing tasks. Tested with WordPress 4.8.1.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp",
+    "build": "gulp build",
+    "deploy:staging": "gulp deploy --staging",
+    "deploy:production": "gulp deploy --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/incrementalmarketing/wordpress-skeleton"
+  },
+  "author": "Dante Chichizola and Igor Vidic",
+  "license": "ISC",
+  "homepage": "https://github.com/incrementalmarketing/wordpress-skeleton/blob/master/README.md",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "del": "~3.0.0",
+    "gulp": "~3.9.1",
+    "gulp-autoprefixer": "~4.0.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-cache": "~0.4.6",
+    "gulp-clean-css": "~3.8.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "~2.6.1",
+    "gulp-if": "~2.0.2",
+    "gulp-imagemin": "~3.3.0",
+    "gulp-jshint": "~2.0.4",
+    "gulp-load-plugins": "~1.5.0",
+    "gulp-newer": "~1.3.0",
+    "gulp-notify": "~3.0.0",
+    "gulp-prompt": "^0.2.0",
+    "gulp-rename": "~1.2.2",
+    "gulp-rsync": "^0.0.8",
+    "gulp-ruby-sass": "~2.1.1",
+    "gulp-sourcemaps": "~2.6.1",
+    "gulp-svgmin": "~1.2.4",
+    "gulp-svgstore": "~6.1.0",
+    "gulp-uglify": "~3.0.0",
+    "gulp-util": "~3.0.8",
+    "jshint": "~2.9.5",
+    "minimist": "^1.2.0",
+    "run-sequence": "~2.1.0"
+  }
+}

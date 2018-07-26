@@ -1,0 +1,6 @@
+[submodule "wp"]
+	path = wp
+	url = git://github.com/WordPress/WordPress.git
+[submodule "content/themes/core"]
+	path = content/themes/core
+	url = https://github.com/incrementalmarketing/core.git

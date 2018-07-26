@@ -1,0 +1,273 @@
+// Navigation
+// ==========
+// Colors defined in modules/_variables_nav.scss
+// Mixins defined in modules/_mixins.scss
+
+// Secton - Nav
+.section-nav {
+  background-color: $section-nav-background-color;
+  text-align: center;
+}
+
+.navbar {
+  display: inline-block;
+
+  ul {
+    display: inline;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      position: relative;
+
+      a {
+        @include smooth;
+        background-color: $nav-background-color-base;
+        color: $nav-anchor-color-base;
+        display: inline-block;
+        font-size: 1em;
+        margin: 0 2px 0 0;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $nav-background-hover-color-base;
+          color: $nav-anchor-hover-color-base;
+        }
+      }
+
+      &.selected a {
+        background-color: $nav-background-selected-color-base;
+        color: $nav-anchor-selected-color-base;
+      }
+
+      &.last a {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .subLevel {
+    background-color: $nav-sublevel-background-color-base;
+    position: absolute;
+    width: 120px;
+    z-index: 999999;
+
+    ul li {
+      float: left;
+      width: 100%;
+
+      a {
+        border-top: medium none !important;
+        color: $nav-sublevel-anchor-color-base;
+        float: left;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 5px 8%;
+        width: 100%;
+
+        &:hover {
+          background-color: $nav-sublevel-background-hover-color-base;
+          color: $nav-sublevel-anchor-hover-color-base;
+        }
+      }
+
+      &.selected a {
+        background-color: $nav-sublevel-background-selected-color-base;
+        color: $nav-sublevel-anchor-selected-color-base;
+      }
+    }
+  }
+}
+
+.item.haschild .subLevel {
+  display: none;
+}
+
+.item.haschild:hover .subLevel,
+.item.haschild.hover .subLevel {
+  display: block;
+}
+
+.item.haschild.last:hover > .subLevel,
+.item.haschild.last.hover > .subLevel {
+  right: 0;
+}
+
+
+// Mobile menu styles
+.mobile-header {
+  background-color: $mobile-nav-header-container-background-color-base;
+  height: $mobile-nav-header-height;
+  padding-bottom: 3px;
+  padding-top: 2px;
+
+  &.sticky-header {
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999999;
+  }
+
+  &.auto-hide {
+		//.container {
+    transition-duration: .5s;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(.215, .610, .355, 1);
+		//}
+
+		//&.mobile-header-hidden .container {
+    &.mobile-header-hidden {
+      transform: translateY(-100%);
+    }
+  }
+}
+
+.overlay {
+  @include smooth;
+  background-color: $overlay-background-color-base;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: $overlay-top;
+  width: 100%;
+  z-index: 1;
+}
+
+.mobile_menubtn {
+  @include smooth;
+  border-radius: 0;
+  cursor: pointer;
+  height: 50px;
+  padding: 10px 20px 8px;
+  position: absolute;
+  right: 6px;
+  top: 0;
+  width: 70px;
+  z-index: 999999999;
+
+  .menutext {
+    color: $mobile-nav-menu-item-background-color-base;
+    display: block;
+    font-size: 10px;
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.mobile_menu {
+  @include smooth;
+  background: $mobile-nav-menu-background-color-base;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  right: -250px;
+  //top: 55px;
+  width: 250px;
+  z-index: 1000;
+
+  &.open {
+    right: 0;
+
+    .mobile_menubtn {
+      background-color: transparent;
+    }
+  }
+
+  ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    a {
+      @include smooth;
+      background-color: $mobile-nav-item-background-color-base;
+      clear: both;
+      color: $mobile-nav-item-anchor-color-base;
+      display: block;
+      letter-spacing: 1px;
+      padding: 12px 10px;
+      text-decoration: none;
+
+      &:hover {
+        background-color: $mobile-nav-item-background-selected-color-base;
+        color: $mobile-nav-item-anchor-selected-color-base;
+        text-decoration: none;
+      }
+
+      &.selected {
+        background-color: $mobile-nav-item-background-selected-color-base;
+        color: $mobile-nav-item-anchor-selected-color-base;
+        text-decoration: none;
+      }
+    }
+
+    &.selected a {
+      background-color: $mobile-nav-item-background-selected-color-base;
+      color: $mobile-nav-item-anchor-selected-color-base;
+      text-decoration: none;
+    }
+
+    &.current-menu-item a {
+      background-color: $mobile-nav-item-background-selected-color-base;
+      color: $mobile-nav-item-anchor-selected-color-base;
+      text-decoration: none;
+    }
+  }
+
+  .haschild .subLevel .item a {
+    margin-bottom: 0;
+    padding-left: 16px;
+    width: 100%;
+  }
+
+  .subLevel {
+    background: none;
+    margin-top: 0;
+    position: inherit;
+    width: auto;
+    z-index: 1;
+  }
+
+  .item.haschild .subLevel {
+    display: block;
+  }
+}
+
+.menuitem {
+  background-color: $mobile-nav-menu-item-background-color-base;
+  display: block;
+  height: 4px;
+  margin: 0 0 4px;
+  padding: 0;
+}
+
+.top.mobile {
+  height: 60px;
+
+  &.absolute {
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.mobile .logo {
+  display: block;
+  height: 50px;
+  max-width: 180px;
+  padding: 3px 0;
+  top: 0;
+  width: 100% !important;
+
+  img {
+    max-height: 46px;
+  }
+}

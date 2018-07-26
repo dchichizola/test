@@ -1,0 +1,127 @@
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+
+# Redirect to https/www
+# Adds the trailing slash if the URL doesn't already have one
+#<IfModule mod_rewrite.c>
+# RewriteEngine On
+# RewriteCond %{HTTPS} off [NC]
+# RewriteCond %{HTTP_HOST} !^sg1\. [NC]
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteCond %{REQUEST_URI} !(.*)/$
+# RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1/ [R=301,L]
+
+# RewriteCond %{HTTPS} !=on [NC]
+# RewriteCond %{REQUEST_URI} !(.*)/$
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [R=301,L]
+#</IfModule>
+
+# Protect WP Login
+ErrorDocument 401 "Unauthorized Access"
+ErrorDocument 403 "Forbidden"
+
+# Disable the Server Signature
+ServerSignature Off
+
+# Disable directory browsing
+Options All -Indexes
+
+# Stop Apache from serving .ht*, .git*, wp-config.php, stage-config.php, README.md and error_log files
+<FilesMatch "(^\.ht|^\.git|wp-config.php|stage-config.php|README.md|error_log)">
+# Apache 2.2 config:
+#Order allow,deny
+#Deny from all
+# Apache 2.4 config: (http://httpd.apache.org/docs/2.4/upgrading.html)
+Require all denied
+</FilesMatch>
+
+# Protect WP Login
+# Generate authentication: http://www.htaccesstools.com/htpasswd-generator/
+# Must use full path for AuthUserFile
+#<FilesMatch "(^login$)|wp-login.php">
+#AuthUserFile /FULL/PATH/TO/.htpasswd
+#AuthName "Please Log In"
+#AuthType Basic
+#require valid-user
+#Order deny,allow
+#Deny from all
+#Allow from 220.233.131.47
+#Satisfy any
+#</FilesMatch>
+
+# Enabling GZip Compression (Apache 2.2)
+#<ifmodule mod_php4.c>
+# php_value zlib.output_compression 16386
+# php_value zlib.output_compression_level 9
+#</ifmodule>
+
+# Enable GZip
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE image/x-icon
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/opentype
+
+# For Olders Browsers Which Can't Handle Compression
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# Enabling file caching to improve server speed
+# Cache images and flash content for one month
+<FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf)$">
+Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+
+# Cache text, css, and javascript files for one week
+<FilesMatch ".(js|css|pdf|txt)$">
+Header set Cache-Control "max-age=604800"
+</FilesMatch>
+
+# Cache html and htm files for one day
+<FilesMatch ".(html|htm)$">
+Header set Cache-Control "max-age=43200"
+</FilesMatch>
+
+# Implement minimal caching during site development
+#<FilesMatch "\.(flv|gif|jpg|jpeg|png|ico|js|css|pdf|swf|html|htm|txt)$">
+#Header set Cache-Control "max-age=5"
+#</FilesMatch>
+
+# Explicitly disable caching for scripts and other dynamic files
+<FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+Header unset Cache-Control
+</FilesMatch>
+
+# Disable caching for scripts and other dynamic files (Apache 2.2)
+#<FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+#ExpiresActive Off
+#</FilesMatch>
+

@@ -1,0 +1,42 @@
+// main.scss
+// ==============
+// This is the only file called from the build task, make sure all relevant
+// files are imported here
+//
+// Note: No longer calling Core main.scss - specify all relevant files here
+
+// Compass
+// @import "compass";
+
+// Load default variables
+@import '../../../core/assets/styles/modules/bootstrap-variables';
+@import '../../../core/assets/styles/modules/variables';
+
+// Load theme variables
+@import 'variables/global';
+// @import 'variables/nav';
+// @import 'variables/forms';
+// @import 'variables/buttons';
+
+// Load core modules
+@import '../../../core/assets/styles/modules/bootstrap';
+@import '../../../core/assets/styles/modules/mixins';
+
+// Load core partials
+@import '../../../core/assets/styles/partials/base-layout';
+@import '../../../core/assets/styles/partials/utilities';
+//@import '../../../core/assets/styles/partials/old-browser';
+@import '../../../core/assets/styles/partials/print';
+
+// Load theme partials
+@import 'partials/base-typography';
+// @import 'partials/base-header';
+@import 'partials/base-footer';
+@import 'partials/nav';
+@import 'partials/forms';
+@import 'partials/buttons';
+@import 'partials/section-content';
+
+// Load content-specific partials (ACF/CPT)
+// @import 'partials/acf_NAME';
+// @import 'partials/cpt_NAME';

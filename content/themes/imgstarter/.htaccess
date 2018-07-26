@@ -1,0 +1,9 @@
+Options -Indexes
+
+<FilesMatch "(error_log|gulpfile.js|package.json|README.md)">
+# Apache 2.2 config:
+#Order allow,deny
+#Deny from all
+# Apache 2.4 config: (http://httpd.apache.org/docs/2.4/upgrading.html)
+Require all denied
+</FilesMatch>
